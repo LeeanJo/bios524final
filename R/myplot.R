@@ -16,5 +16,3 @@ myplot <- function(data) {
 
 }
 
-# token credential
-git
