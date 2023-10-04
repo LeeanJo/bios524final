@@ -1,0 +1,80 @@
+---
+title: "JO_bios524_finalproject"
+output: html_document
+date: "2023-10-04"
+---
+```{r}
+library(readr)
+library(dplyr)
+
+library(ggplot2)
+library(tidyverse)
+
+```
+
+
+```{r}
+
+EV <- read.csv("C:/Users/joi/OneDrive/Desktop/Biomedical Computing/Electric_Vehicle_Population_Data.csv")
+
+Vehicle <- EV %>% select (Make, Model) %>% arrange(Make, Model)
+
+name_of_make <- unique(Vehicle$Make)
+name_of_make
+
+
+name_of_model <- unique(Vehicle$Model)
+name_of_model
+
+
+vehicle <- EV %>% arrange(Model)
+```
+
+```{r}
+bios524final::myplot(vehicle, Model)
+
+
+ 
+```
+
+```{r}
+
+factor_Model <- as.factor(EV$Model)
+factor_Model <- as.numeric(factor_Model)
+EV <- cbind(EV, factor_Model)
+
+cor(factor_Model, EV$Base.MSRP )
+````
+
+MSRP <- EV %>% filter( Base.MSRP != 0 ) %>%
+  select(c(County, City, Model.Year, Make, Model, Base.MSRP, Electric.Vehicle.Type)) %>% 
+   arrange(desc(Base.MSRP))
+
+
+freq_MSRP<- MSRP %>% filter( Base.MSRP != 0 ) %>%
+  arrange(Make, Model)
+
+
+freq_MSRP_hist <- MSRP %>% filter( Base.MSRP != 0 ) %>%
+  arrange(Make, Model) %>%
+  ggplot(aes(x = Base.MSRP)) + 
+  geom_histogram()
+
+freq_MSRP_hist
+
+
+
+freq_MSRP_hist + xlim(0, 50000)
+
+# Price is usually between (30000, 50000) and EV is expensive.
+freq_MSRP_hist + xlim(30000, 50000)
+
+
+freq_MSRP_hist + xlim(50000, 200000)
+
+
+freq_MSRP_hist + xlim(500000, 1000000)
+
+
+
+```

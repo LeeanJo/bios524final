@@ -3,7 +3,8 @@
 #' This function will plot ggplot2 package's graph
 #'
 #'
-#' @param data dataframe
+#' @param df dataframe
+#' @param var variable
 #' @export
 #' @author Leean Jo
 #' @examples
@@ -11,8 +12,10 @@
 #'
 
 
-myplot <- function(data) {
-  ggplot2::ggplot(data, aes(x= data)) + geom_bar()
+myplot <- function(df, var) {
+  ggplot2:: ggplot(df, ase(x=var)) +
+    geom_bar() +
+    coord_flip()
 
 }
 

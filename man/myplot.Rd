@@ -4,10 +4,12 @@
 \alias{myplot}
 \title{Plotting function}
 \usage{
-myplot(data)
+myplot(df, var)
 }
 \arguments{
-\item{data}{dataframe}
+\item{df}{dataframe}
+
+\item{var}{variable}
 }
 \description{
 This function will plot ggplot2 package's graph
