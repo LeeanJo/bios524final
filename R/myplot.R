@@ -13,7 +13,7 @@
 
 
 myplot <- function(df, var) {
-  ggplot2:: ggplot(df, ase(x=var)) +
+  ggplot2:: ggplot(df, aes(x=var)) +
     geom_bar() +
     coord_flip()
 
